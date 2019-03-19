@@ -12,13 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('plan.list');
 });
 // Tryout Main
-Route::get('/list', function () { return 'this is list'; })->name('plan.list');
-Route::get('/detail/{plan}', function () { return 'detail';})->name('plan.detail');
-Route::get('/plan/post', function () { return 'post';})->name('plan.post');
-Route::get('/about', function () { return 'abotu'; })->name('about');
+Route::get('/list', 'PlanController@show')->name('plan.list');
+Route::get('/detail/{plan}', 'PlanController@detail')->name('plan.detail');
+Route::get('/plan/post', 'PlanController@post')->name('plan.post');
+Route::get('/about', 'Controller@about')->name('about');
 
 // Twitter Login
 Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider')->name('twitter.login');
