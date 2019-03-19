@@ -229,5 +229,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
-
+    
+    'env' => env('APP_ENV')
 ];

@@ -41,7 +41,7 @@ class TwitterController extends Controller
     {
         // 各自ログアウト処理
         // 例
-        // Auth::logout();
+        Auth::logout();
         return redirect('/');
     }
     private function findOrCreateUser($twitterUser) {
@@ -49,6 +49,7 @@ class TwitterController extends Controller
         if ($authUser) {
             return $authUser;
         }
+
         return User::create([
             'name' => $twitterUser->name,
             'nickname' => $twitterUser->nickname,

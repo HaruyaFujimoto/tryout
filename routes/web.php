@@ -19,8 +19,8 @@ Route::get('/home', function () {
     return 'Hello second!!';
 });
 // ログインURL
-Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider');
+Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider')->name('twitter.login');
 // コールバックURL
-Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');
+Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback')->name('twitter.callback');
 // ログアウトURL
-Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');
+Route::get('auth/twitter/logout', 'Auth\TwitterController@logout')->name('twitter.logout');
