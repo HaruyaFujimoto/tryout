@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Socialite;
 use App\User;
+use Auth;
 
 class TwitterController extends Controller
 {

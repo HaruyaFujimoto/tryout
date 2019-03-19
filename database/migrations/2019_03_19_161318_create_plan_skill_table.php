@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlanSkillTalbe extends Migration
+class CreatePlanSkillTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePlanSkillTalbe extends Migration
      */
     public function up()
     {
-        Schema::create('plan_skill_talbe', function (Blueprint $table) {
+        Schema::create('plan_skill', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('plan_id');
-            $table->integer('skill_id');
         });
     }
 
@@ -28,6 +26,6 @@ class CreatePlanSkillTalbe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plan_skill_talbe');
+        Schema::dropIfExists('plan_skill');
     }
 }
