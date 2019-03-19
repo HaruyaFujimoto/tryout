@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return 'Hello second!!';
 });
+// ログインURL
+Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider');
+// コールバックURL
+Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');
+// ログアウトURL
+Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');
