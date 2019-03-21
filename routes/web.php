@@ -15,9 +15,14 @@ Route::get('/', function () {
     return redirect()->route('plan.list');
 });
 // Tryout Main
-Route::get('/list', 'PlanController@show')->name('plan.list');
-Route::get('/detail/{plan}', 'PlanController@detail')->name('plan.detail');
-Route::get('/plan/post', 'PlanController@post')->name('plan.post');
+Route::get('/plan', 'PlanController@index')->name('plan.index');
+Route::get('/plan/{plan}', 'PlanController@show')->name('plan.show');
+Route::get('/plan/post', 'PlanController@create')->name('plan.create');
+Route::post('/plan', 'PlanController@store')->name('plan.store');
+Route::get('/plan/{plan}/edit', 'PlanController@edit')->name('plan.edit');
+Route::put('/plan/{plan}', 'PlanController@update')->name('plan.update');
+Route::delete('/plan/{plan}', 'PlanController@destroy')->name('plan.destroy');
+
 Route::get('/about', 'Controller@about')->name('about');
 
 // Twitter Login

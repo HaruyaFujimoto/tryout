@@ -7,4 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     //
+    protected $fillable = [
+        'name' 
+        ];
+    public static $rules = array(
+        'name' => 'required|between:1,20';
+        );
+    
+    public function plans() {
+        return $this->belongsToMany('App\Plan');
+    }
 }
