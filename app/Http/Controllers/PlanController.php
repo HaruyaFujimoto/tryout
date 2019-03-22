@@ -8,27 +8,38 @@ use App\Plan;
 class PlanController extends Controller
 {
     public function index() {
-        return 'list';
+        $plans = Plan::latest()->get();
+        return view('plan.list', compact('plans'));
     }
     public function show(Plan $plan) {
-        return 'detail';
+        return view('plan.detail', compact('plan'));
     }
 
     public function create() {
-        return 'create';
+        return view('plan.post');
     }
-    public function store() {
-        return 'store';
+    public function store(Request $request) {
+        $this->validate($request, Plan::$rules);
+        $plan = new Plan;
+        $form = $request->all();
+        unset($form['_token']);
+        $plan->fill($form)->save();
+        return redirect()->route('plan.index');
     }
 
     public function edit(Plan $plan) {
-        return 'edit';
+        return view('plan.edit', compact('plan'));
     }
-    public function update(Plan $plan) {
-        return 'update';
+    public function update(Request $request, Plan $plan) {
+        $this->validate($request, Plan::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        $plan->fill($form)->save();
+        return redirect()->route('plan.detail', $plan);
     }
 
     public function destroy(Plan $plan) {
-        return 'destroy';
+        $plan->delete();
+        return redirect()->route('plan.index');
     }
 }

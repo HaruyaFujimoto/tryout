@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     protected $fillable = [
-        'name', 'object', ' description'
+        'name', 'object', 'description'
         ];
     public static $rules = array(
         'name' => 'required|unique:plans|between:3,20',

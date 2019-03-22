@@ -15,10 +15,10 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('name');
             $table->text('object');
             $table->text('description');
+            $table->timestamps();
         });
     }
 
