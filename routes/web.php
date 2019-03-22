@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('plan.list');
+    return redirect()->route('plan.index');
 });
 // Tryout Main
 Route::get('/plan', 'PlanController@index')->name('plan.index');
