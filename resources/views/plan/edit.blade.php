@@ -47,7 +47,7 @@
         </ul>
     @endif
 </label>
-<input type="submit">
+<input type="submit" name="send" value="送信">
 </form>
 <a href="{{ route('plan.index') }}">リストへ</a>
 @endsection
