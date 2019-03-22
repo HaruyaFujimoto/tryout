@@ -1,0 +1,13 @@
+@extends('templates.base')
+@section('title', 'Plan Post')
+
+@section('main')
+<h1>企画投稿</h1>
+<form action="{{ route('plan.store') }}" method="post">
+{{ csrf_field() }}
+<input type="text" name="name">
+<textarea name="object"></textarea>
+<textarea name="description"></textarea>
+<input type="submit">
+</form>
+@endsection
