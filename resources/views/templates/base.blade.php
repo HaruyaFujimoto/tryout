@@ -12,6 +12,10 @@
         @endif
     </head>
 <body>
-@yield('main')
+@include('templates.header')
+<div class="wrapper">
+    @yield('main')
+    @include('templates.footer')
+</div>
 </body>
 </html>
