@@ -10,6 +10,7 @@
         @else
             <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
         @endif
+        @yield('css')
     </head>
 <body>
 @include('templates.header')

@@ -1,5 +1,5 @@
 html {
-    background-color: coral;
+    background-color: #FFC526;
     padding: 0, 20px;
     margin: 0;
 }
@@ -23,7 +23,7 @@ header h1 {
     margin-bottom: 50px;
 }
 h1 a {
-    display: block;
+    
     text-decoration: none;
     color: inherit;
 }

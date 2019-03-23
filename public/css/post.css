@@ -1,0 +1,40 @@
+div.post-form {
+    max-width: 50%;
+    margin: 0 auto;
+}
+.post-form h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.post-form h2 {
+    margin: 20px 0 0 10px;
+}
+.post-form input[type=text] {
+    width: 95%;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+    border-radius: 0.5rem;
+}
+.post-form textarea {
+    width: 95%;
+    height: 200px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0;
+    border-radius: 0.5rem;
+}
+.post-form input[type=submit] {
+    display: block;
+    margin: 0 0 0 auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-style: none;
+    border-radius: 1rem;
+}
+.post-form .errors {
+    color: red;
+    margin: 0;
+    padding: 0;
+}

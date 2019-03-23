@@ -1,0 +1,27 @@
+ul.items {
+    display: flex;
+    padding: 0;
+}
+.items li {
+    display: block;
+    width: 33%;
+    padding: 35px;
+}
+a.item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 1.2rem;
+    padding : 20px;
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
+    
+}
+a.item:hover {
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.7);
+    background-color: azure;
+    opacity: 0.8;
+    transition: background-color 0.2s;
+}
+a.item h2 {
+    margin: 0;
+}

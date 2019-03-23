@@ -31,11 +31,13 @@ class PlanController extends Controller
         return view('plan.edit', compact('plan'));
     }
     public function update(Request $request, Plan $plan) {
-        $this->validate($request, Plan::$rules);
+        $rules = Plan::$rules;
+        $rules['name'] = 'required|unique:plans,name,'.$plan->id.'|between:3,20';
+        $this->validate($request, $rules);
         $form = $request->all();
         unset($form['_token']);
         $plan->fill($form)->save();
-        return redirect()->route('plan.detail', $plan);
+        return redirect()->route('plan.show', $plan);
     }
 
     public function destroy(Plan $plan) {
