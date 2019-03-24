@@ -34,3 +34,4 @@ Route::get('auth/twitter/logout', 'Auth\TwitterController@logout')->name('twitte
 // User
 Route::get('/user', 'UserController@show')->name('user.show');
 Route::delete('/user', 'UserController@delete')->name('user.delete');
+Route::get('/user/invite', 'UserController@invite')->name('user.invite');

@@ -14,7 +14,7 @@
 <h1>企画投稿</h1>
 <form action="{{ route('plan.store') }}" method="post">
 {{ csrf_field() }}
-<label><h2>企画名</h2></br>
+<label><h2>企画名</h2>
     @if ( old('name') )
         @php
         $value = old('name');
@@ -24,7 +24,7 @@
         $value = '';
         @endphp
     @endif
-    <input type="text" name="name" value="{{ $value }}"></br> 
+    <input type="text" name="name" value="{{ $value }}">
     @if ( $errors->has('name') )
         <ul class="errors">
         @foreach ( $errors->get('name') as $error )
@@ -33,7 +33,8 @@
         </ul>
     @endif
 </label>
-<label><h2>目的・動機</h2></br>
+<hr>
+<label><h2>目的・動機</h2>
     @if ( old('object') )
         @php
         $value = old('object');
@@ -43,7 +44,7 @@
         $value = '';
         @endphp
     @endif
-    <textarea name="object">{{ $value }}</textarea></br>
+    <textarea name="object">{{ $value }}</textarea>
     @if ( $errors->has('object') )
         <ul class="errors">
         @foreach ( $errors->get('object') as $error )
@@ -52,7 +53,8 @@
         </ul>
     @endif
 </label>
-<label><h2>企画詳細</h2></br>
+<hr>
+<label><h2>企画詳細</h2>
     @if ( old('description') )
         @php
         $value = old('description');
@@ -62,7 +64,7 @@
         $value = '';
         @endphp
     @endif
-    <textarea name="description">{{ $value }}</textarea></br>
+    <textarea name="description">{{ $value }}</textarea>
     @if ( $errors->has('description') )
         <ul class="errors">
         @foreach ( $errors->get('description') as $error )
@@ -73,6 +75,6 @@
 </label>
 <input type="submit" value="送信">
 </form>
-<a href="{{ route('plan.index') }}">リストへ</a>
+<p class="to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>
 </div>
 @endsection

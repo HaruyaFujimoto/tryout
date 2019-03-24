@@ -59,6 +59,6 @@
 </label>
 <input type="submit" name="send" value="送信">
 </form>
-<a href="{{ route('plan.index') }}">リストへ</a>
+<p class="to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>
 </div>
 @endsection

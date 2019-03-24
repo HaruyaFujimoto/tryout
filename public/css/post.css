@@ -8,26 +8,29 @@ div.post-form {
     margin-bottom: 50px;
 }
 .post-form h2 {
-    margin: 20px 0 0 10px;
+    font-size: 1.2rem;
+    margin: 20px 0 10px 10px;
 }
 .post-form input[type=text] {
+    display: block;
+    margin: 0 auto;
     width: 95%;
     font-size: 1rem;
-    padding: 0.5rem;
-    margin: 0;
-    border-radius: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
 }
 .post-form textarea {
+    display: block;
+    margin: 0 auto;
     width: 95%;
     height: 200px;
     font-size: 1rem;
-    padding: 0.5rem;
-    margin: 0;
-    border-radius: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
 }
 .post-form input[type=submit] {
     display: block;
-    margin: 0 0 0 auto;
+    margin: 20px 0 0 auto;
     padding: 10px 20px;
     font-size: 1.2rem;
     border-style: none;
@@ -37,4 +40,10 @@ div.post-form {
     color: red;
     margin: 0;
     padding: 0;
+}
+.post-form hr {
+    margin: 20px 0;
+}
+.to-list {
+    text-align: center;
 }
