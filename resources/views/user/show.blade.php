@@ -1,6 +1,5 @@
 @extends('template.base.html')
 @section('title', 'user')
-
-@seciton('main')
+@section('main')
 {{ $user->name }}
 @endsection
