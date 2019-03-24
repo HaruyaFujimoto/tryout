@@ -22,13 +22,13 @@ class TwitterController extends Controller
         }
         $authUser = $this->findOrCreateUser($user);
         Auth::login($authUser, true);
-        return redirect()->route('home');
+        return redirect()->route('plan.index');
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('plan.indext');
     }
 
     private function findOrCreateUser($twitterUser) {
