@@ -2,5 +2,5 @@
 @section('title', 'user')
 
 @seciton('main')
-{{ $user.name }}
+{{ $user->name }}
 @endsection
