@@ -1,4 +1,4 @@
-@extends('template.base.html')
+@extends('templates.base.html')
 @section('title', 'user')
 @section('main')
 {{ $user->name }}
