@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Plan;
 use App\Skill;
 use Auth;
+use DB;
 
 class PlanController extends Controller
 {
