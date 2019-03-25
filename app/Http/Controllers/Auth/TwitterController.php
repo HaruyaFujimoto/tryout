@@ -13,8 +13,11 @@ class TwitterController extends Controller
     public function redirectToProvider(){
         // <develop>
         if (app('env') != 'production' && app('env') != 'test') {
-            $user = User::find(1);
-            Auth::login($user, true);
+            $user = User::all()->first();
+            if ($user) {
+                Auth::login($user, true);
+                return redirect()->route('plan.index');
+            }
             return redirect()->route('plan.index');
         }
         // </develop>

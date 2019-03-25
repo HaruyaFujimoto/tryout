@@ -28,4 +28,7 @@
 <p>企画はまだありません</p>
 @endforelse
 </div>
+<div class="paginate">
+{{ $plans->links() }}
+</div>
 @endsection

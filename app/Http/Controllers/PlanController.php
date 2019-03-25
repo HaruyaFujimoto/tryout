@@ -11,7 +11,7 @@ use DB;
 class PlanController extends Controller
 {
     public function index() {
-        $plans = Plan::with('user', 'skills')->get();
+        $plans = Plan::with('user', 'skills')->orderBy('id', 'desc')->paginate(15);
         return view('plan.list', compact('plans'));
     }
     public function show(Plan $plan) {
@@ -20,7 +20,7 @@ class PlanController extends Controller
 
     public function create() {
         if (Auth::user()) {
-            $skills = Skill::all();
+            $skills = Skill::with('plans')->get();
             return view('plan.post', compact('skills'));
         }
         return redirect()->route('plan.index');
@@ -50,6 +50,9 @@ class PlanController extends Controller
         return redirect()->route('plan.index');
     }
     public function update(Request $request, Plan $plan) {
+        if ($plan->user != Auth::user()) {
+            return redirect()->route('plan.index');
+        }
         $rules = Plan::$rules;
         $rules['name'] = 'required|unique:plans,name,'.$plan->id.'|between:3,20';
         $this->validate($request, $rules);

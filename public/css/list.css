@@ -53,3 +53,12 @@
     margin-right: 5px;
     margin-top: 5px;
 }
+.paginate ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+.paginate li {
+    display: inline;
+}

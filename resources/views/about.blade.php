@@ -1,6 +1,7 @@
 @extends('templates.base')
 @section('title', 'このサイトについて')
 @section('main')
+<div class="aboutPage">
 <h2>目的</h2>
 <p>
 ネット上にはたくさんの簡単にアクセスできるプログラミングの知識があり、またオンラインサロンのように仲間を見つける手段もあります。<br>
@@ -35,4 +36,5 @@
 このサイトは個人によって非営利目的で運営されています。
 https://twitter.com/hal822tw
 </p>
+</div>
 @endsection

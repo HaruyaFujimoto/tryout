@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use User;
+use App\User;
 use Auth;
 
 class UserController extends Controller
@@ -14,20 +14,24 @@ class UserController extends Controller
         }
         // <develop>
         if (app('env') != 'production' && app('env') != 'test') {
-            $user = User::find(1);
-            Auth::login($user, true);
-            return view('user.show');
+            $user = User::all()->first();
+            if ($user) {
+                Auth::login($user, true);
+                return view('user.show');
+            }
+            return redirect()->route('plan.index');
         }
         // </develop>
         
         return redirect()->route('user.invite');
     }
     
-    public function delete() {
-        $user = Auth::user();
-        Auth::logout();
-        $user->delete();
-        return redirect()->route('home');
+    public function destroy(User $user) {
+        if ($user = Auth::user()) {
+            Auth::logout();
+            $user->delete();
+        }
+        return redirect()->route('plan.index');
     }
 
     public function invite() {

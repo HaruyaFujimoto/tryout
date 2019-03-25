@@ -33,7 +33,7 @@ Route::get('auth/twitter/logout', 'Auth\TwitterController@logout')->name('twitte
 
 // User
 Route::get('/user', 'UserController@show')->name('user.show');
-Route::delete('/user', 'UserController@delete')->name('user.delete');
+Route::delete('/user/{user}', 'UserController@destroy')->name('user.destroy');
 Route::get('/user/invite', 'UserController@invite')->name('user.invite');
 
 // Skill

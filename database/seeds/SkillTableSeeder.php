@@ -13,23 +13,27 @@ class SkillTableSeeder extends Seeder
     public function run()
     {
         $items = [
-            'Laravel',
-            'PHP',
-            'Python',
-            'Django',
-            'Flask',
-            'javascript',
-            'View.js',
-            'React',
-            'Angular',
-            'Java',
-            'C/C++',
-            'Ruby',
-            'Ruby on Rails',
+            [ 'name' => 'Laravel' ],
+            [ 'name' => 'PHP' ],
+            [ 'name' => 'Python' ],
+            [ 'name' => 'Django' ],
+            [ 'name' => 'Flask' ],
+            [ 'name' => 'javascript' ],
+            [ 'name' => 'View.js' ],
+            [ 'name' => 'React' ],
+            [ 'name' => 'Angular' ],
+            [ 'name' => 'Java' ],
+            [ 'name' => 'C/C++' ],
+            [ 'name' => 'Ruby' ],
+            [ 'name' => 'Ruby on Rails' ],
         ];
         foreach ($items as $item) {
+            $validator = \Validator::make($item, Skill::$rules);
+            if ($validator->fails()) {
+                continue;
+            }
             $skill = new Skill;
-            $skill->name = $item;
+            $skill->fill($item);
             $skill->save();
         }
     }
