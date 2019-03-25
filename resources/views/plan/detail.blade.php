@@ -17,6 +17,14 @@
 <p>{{ $plan->object }}</p>
 <h3>企画詳細</h3>
 <p>{{ $plan->description }}</p>
+<h3>スキル</h3>
+<ul class="skills">
+@forelse ($plan->skills as $skill)
+<li>{{ $skill->name }}</li>
+@empty
+<li>登録なし</li>
+@endforelse
+</ul>
 <div class="to-edit">
     <a href="{{ route('plan.edit', $plan) }}"><button>編集する</button></a>
     <form action="{{ route('plan.destroy', $plan) }}" method="post">

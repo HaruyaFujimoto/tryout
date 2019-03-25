@@ -1,10 +1,17 @@
 <header>
 <h1><a href="{{ route('plan.index')}}">Tryout</a></h1>
 <nav>
-
-<div class="user">
-user?
-</div>
+@isset ($user)
+@if ($user->id == 1)
+<p><a href="{{ route('skill.index') }}">Skill一覧へ</a></p>
+@endif
+<p><a href="{{ route('plan.create') }}">投稿</a></p>
+<p><a href="{{ route('user.show') }}">ユーザーページ</a></p>
+<p><a href="{{ route('twitter.logout') }}">ログアウト</a></p>
+@else
+<p><a href="{{ route('user.invite') }}">user?</a><p>
+<p><a href="{{ route('twitter.login')}}">Login use Twitter</a></p>
+@endisset
 </nav>
 <p>ポートフォリオ作成のための企画集</p>
 <div class="about">

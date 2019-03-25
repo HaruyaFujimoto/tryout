@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return redirect()->route('plan.index');
 });
-// Tryout Main
+// Plan (: Tryout Main)
 Route::get('plan', 'PlanController@index')->name('plan.index');
 Route::get('plan/post','PlanController@create')->name('plan.create');
 Route::post('plan', 'PlanController@store')->name('plan.store');
@@ -35,3 +35,9 @@ Route::get('auth/twitter/logout', 'Auth\TwitterController@logout')->name('twitte
 Route::get('/user', 'UserController@show')->name('user.show');
 Route::delete('/user', 'UserController@delete')->name('user.delete');
 Route::get('/user/invite', 'UserController@invite')->name('user.invite');
+
+// Skill
+Route::get('/skill', 'SkillController@index')->name('skill.index');
+Route::get('/skill/post', 'SkillController@create')->name('skill.create');
+Route::post('/skill', 'SkillController@store')->name('skill.store');
+Route::delete('/skill/{skill}', 'SkillController@destroy')->name('skill.destroy');

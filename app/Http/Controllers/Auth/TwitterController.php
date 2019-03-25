@@ -11,6 +11,16 @@ class TwitterController extends Controller
 {
 
     public function redirectToProvider(){
+        // <develop>
+        if (app('env') != 'production' && app('env') != 'test') {
+            $user = User::find(1);
+            Auth::login($user, true);
+            return redirect()->route('plan.index');
+        }
+        // </develop>
+        if (Auth::user()) {
+            return redirect()->route('plan.index');
+        }
         return Socialite::driver('twitter')->redirect();
     }
 
@@ -25,10 +35,10 @@ class TwitterController extends Controller
         return redirect()->route('plan.index');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        return redirect()->route('plan.indext');
+        return redirect()->route('plan.index');
     }
 
     private function findOrCreateUser($twitterUser) {

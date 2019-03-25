@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Plan;
 
 class User extends Authenticatable
 {
@@ -16,13 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'nickname', 'twitter_id', 'avatar',
+        'name', 'nickname', 'twitter_id', 'avatar'
     ];
 
     public function plans() {
-        return $this->belongsToMany('App\Plan');
-    }
-    public function skills() {
-        return $this->belongsToMany('App\Skill');
+        return $this->hasMany('App\Plan');
     }
 }

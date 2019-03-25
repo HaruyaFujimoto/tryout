@@ -73,6 +73,21 @@
         </ul>
     @endif
 </label>
+<h2>スキル</h2>
+<ul>
+@php
+$skill_ids = [];
+if (old('skills') != null) {
+    $skill_ids = array_map('intval', old('skills'));
+}
+@endphp
+@foreach ($skills as $skill)
+    <li><label>
+        <input type="checkbox" name="skills[]" value="{{ $skill->id }}" {{ in_array($skill->id, $skill_ids, true)? 'checked="checked"' : '' }}>
+        {{ $skill->name }}
+        </label></li>
+@endforeach
+</ul>
 <input type="submit" value="送信">
 </form>
 <p class="to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>

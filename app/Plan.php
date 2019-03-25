@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
+use App\Skill;
 
 class Plan extends Model
 {
@@ -15,6 +17,9 @@ class Plan extends Model
         'description' => 'required|between:1,300'
         );
     //
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
     public function skills() {
         return $this->belongsToMany('App\Skill');
     }

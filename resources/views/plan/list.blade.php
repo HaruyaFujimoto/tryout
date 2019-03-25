@@ -13,18 +13,22 @@
 
 <a href="{{ route('plan.create') }} ">企画を投稿する</a>
 
-<ul class="items">
+<div class="items">
 @forelse ( $plans as $plan )
-    <li>
-        <a href="{{ route('plan.show', $plan) }}"class="item">
-        
+    <div class="item">
+        <a href="{{ route('plan.show', $plan) }}">
             <h2>{{ $plan->name }}</h2>
-            {{ str_limit($plan->object, $limit = 150, $end = '...') }}
-        
+            <p>{{ str_limit($plan->object, $limit = 150, $end = '...') }}</p>
+            <ul>
+            @forelse ($plan->skills as $skill)
+                <li>{{ $skill->name }}</li>
+            @empty
+            @endforelse
+            </ul>
         </a>
-    </li>
+    </div>
 @empty
-<li>企画はまだありません</li>
+<p>企画はまだありません</p>
 @endforelse
-</ul>
+</div>
 @endsection

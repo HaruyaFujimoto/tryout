@@ -13,6 +13,13 @@ class UserController extends Controller
         if ($user) {
             return view('user.show', compact('user'));
         }
+        // <develop>
+        if (app('env') != 'production' && app('env') != 'test') {
+            $user = User::find(1);
+            Auth::login($user, true);
+            return view('user.show', compact('user'));
+        }
+        // </develop>
         return redirect()->route('user.invite');
     }
     
