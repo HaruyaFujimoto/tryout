@@ -1,6 +1,7 @@
 @extends('templates.base')
 @section('title', 'user')
 @section('main')
+<div class="aboutPage">
 <h2>ログイン・ユーザー情報について</h2>
 <p>
 このウェブアプリケーションではでは Twitter 連携によるログインを行っています。<br>
@@ -13,4 +14,5 @@ Twitter からこのアプリケーションへ、<br>
 <p>
 ログイン済みであれば、いつでもサーバー上からユーザー情報の削除を行うことができます。
 </p>
+<div>
 @endsection
