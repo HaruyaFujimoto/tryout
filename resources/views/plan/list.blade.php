@@ -10,9 +10,6 @@
 @endsection
 {{-- main --}}
 @section('main')
-
-<a href="{{ route('plan.create') }} ">企画を投稿する</a>
-
 <div class="items">
 @forelse ( $plans as $plan )
     <div class="item">

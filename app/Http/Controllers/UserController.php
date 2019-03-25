@@ -9,17 +9,17 @@ use Auth;
 class UserController extends Controller
 {
     public function show() {
-        $user = Auth::user();
-        if ($user) {
-            return view('user.show', compact('user'));
+        if (Auth::user()) {
+            return view('user.show');
         }
         // <develop>
         if (app('env') != 'production' && app('env') != 'test') {
             $user = User::find(1);
             Auth::login($user, true);
-            return view('user.show', compact('user'));
+            return view('user.show');
         }
         // </develop>
+        
         return redirect()->route('user.invite');
     }
     
@@ -34,6 +34,6 @@ class UserController extends Controller
         if (Auth::user()) {
             return redirect()->route('plan.index');
         }
-        return 'invite page';
+        return view('user.invite');
     }
 }
