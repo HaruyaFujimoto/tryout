@@ -22,7 +22,7 @@ class SkillController extends Controller
         if ($user && $user->id == User::with('plans')->orderBy('id', 'asc')->first()->id) {
             return view('skill.post');
         }
-        return redirect()->route('plan.index'); 
+        return redirect()->route('plan.index');
     }
     public function store(Request $request) {
         $user = Auth::user();
