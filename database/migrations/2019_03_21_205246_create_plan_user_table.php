@@ -14,10 +14,16 @@ class CreatePlanUserTable extends Migration
     public function up()
     {
         Schema::create('plan_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
-            $table->integer('plan_id');
-            $table->integer('user_id');
+            $table->bigInteger('plan_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->primary(['plan_id', 'user_id'])->unique();
+
+            $table->foreign('plan_id')
+                ->references('id')->on('plans')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

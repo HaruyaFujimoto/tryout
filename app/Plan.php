@@ -16,9 +16,13 @@ class Plan extends Model
         'object' => 'required|between:1,300',
         'description' => 'required|between:1,300'
         );
-    //
+    // n:1
     public function user() {
         return $this->belongsTo('App\User');
+    }
+    // n:n
+    public function users() {
+        return $this->belongsToMany('App\User');
     }
     public function skills() {
         return $this->belongsToMany('App\Skill');

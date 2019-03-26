@@ -7,10 +7,11 @@
 @endif
 <p><a href="{{ route('plan.create') }}">投稿</a></p>
 <p><a href="{{ route('user.show') }}">ユーザーページ</a></p>
+<br>
 <p><a href="{{ route('twitter.logout') }}">ログアウト</a></p>
 @else
-<p><a href="{{ route('user.invite') }}">user?</a><p>
-<p><a href="{{ route('twitter.login')}}">Login use Twitter</a></p>
+<p><a href="{{ route('user.invite') }}">ログインについて</a><p>
+<p><a href="{{ route('twitter.login')}}">Twitterアカウントでログイン</a></p>
 @endisset
 </nav>
 <p>ポートフォリオ作成のための企画集</p>

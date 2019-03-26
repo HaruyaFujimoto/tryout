@@ -14,9 +14,6 @@ class PlanController extends Controller
         $plans = Plan::with('user', 'skills')->orderBy('id', 'desc')->paginate(15);
         return view('plan.list', compact('plans'));
     }
-    public function show(Plan $plan) {
-        return view('plan.detail', compact('plan'));
-    }
 
     public function create() {
         if (Auth::user()) {
@@ -26,22 +23,34 @@ class PlanController extends Controller
         return redirect()->route('plan.index');
     }
     public function store(Request $request) {
-        $this->validate($request, Plan::$rules);
-        $user = Auth::user();
-        $plan = new Plan;
-        $post = $request->all();
-        $plan->fill($post);
-        DB::beginTransaction();
-        try {
-            $user->plans()->save($plan);
-            $plan->skills()->attach($request->skills);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
+        if (Auth::user()) {
+            $this->validate($request, Plan::$rules);
+            $user = Auth::user();
+            $plan = new Plan;
+            $post = $request->all();
+            $plan->fill($post);
+            DB::beginTransaction();
+            try {
+                $user->plans()->save($plan);
+                $plan->skills()->attach($request->skills);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollback();
+            }
         }
         return redirect()->route('plan.index');
     }
 
+
+    public function show(Plan $plan) {
+        $isLiked = '';
+        $user = Auth::user();
+        if ($user) {
+            $relate = DB::table('plan_user')->where('user_id', $user->id)->where('plan_id', $plan->id)->first();
+            $isLiked = $relate ? 'true' : '';
+        }
+        return view('plan.detail', compact('plan', 'isLiked'));
+    }
     public function edit(Plan $plan) {
         if (Auth::user() == $plan->user) {
             $skills = Skill::with('plans')->get();
@@ -70,7 +79,24 @@ class PlanController extends Controller
     }
 
     public function destroy(Plan $plan) {
+        if ($plan->user != Auth::user()) {
+            return redirect()->route('plan.index');
+        }
         $plan->delete();
         return redirect()->route('plan.index');
+    }
+
+    public function like(Request $request, Plan $plan) {
+        $user = Auth::user();
+        DB::beginTransaction();
+        try {
+            $user->liked_plans()->toggle($plan);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            abort(500);
+        }
+        $relate = DB::table('plan_user')->where('user_id', $user->id)->where('plan_id', $plan->id)->first();
+        return $relate ? 'true' : 'false';
     }
 }

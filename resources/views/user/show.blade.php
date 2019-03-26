@@ -28,7 +28,11 @@
 <div class="userLikes">
     <h2>興味のある企画</h2>
     <ul>
+    @forelse( $user->liked_plans as $plan)
+    <li><a href="{{ route('plan.show', $plan) }}">{{ $plan->name }}</a></li>
+    @empty
     <li>未実装</li>
+    @endforelse
     </ul>
 </div>
 <div class="userDelete">

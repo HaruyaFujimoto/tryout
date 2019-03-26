@@ -22,7 +22,10 @@ Route::post('plan', 'PlanController@store')->name('plan.store');
 Route::get('plan/{plan}', 'PlanController@show')->name('plan.show');
 Route::get('plan/{plan}/edit', 'PlanController@edit')->name('plan.edit');
 Route::put('Plan/{plan}', 'PlanController@update')->name('plan.update');
+
 Route::delete('plan/{plan}', 'PlanController@destroy')->name('plan.destroy');
+Route::post('plan/{plan}/sendlike', 'PlanController@like')->name('plan.like');
+
 
 Route::get('/about', 'Controller@about')->name('about');
 

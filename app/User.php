@@ -19,8 +19,12 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'nickname', 'twitter_id', 'avatar'
     ];
-
+    // 1:n
     public function plans() {
         return $this->hasMany('App\Plan');
+    }
+    // n:n
+    public function liked_plans() {
+        return $this->belongsToMany('App\Plan');
     }
 }
