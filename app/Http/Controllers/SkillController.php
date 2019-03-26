@@ -10,35 +10,39 @@ use Auth;
 class SkillController extends Controller
 {
     public function index() {
-        if (Auth::user()->id != User::with('plans')->orderBy('id', 'asc')->first()->id) {
-            return redirect()->route('plan.index');
+        $user = Auth::user();
+        if ($user && $user->id == User::with('plans')->orderBy('id', 'asc')->first()->id) {
+            $skills = Skill::with('plans')->orderBy('id', 'asc')->get();
+            return view('skill.list', compact('skills'));
         }
-        $skills = Skill::with('plans')->orderBy('id', 'asc')->get();
-        return view('skill.list', compact('skills'));
+        return redirect()->route('plan.index');
     }
     public function create() {
         return view('skill.post');
     }
     public function store(Request $request) {
-        if (Auth::user()->id != User::with('plans')->orderBy('id', 'asc')->first()->id) {
-            return redirect()->route('plan.index');
-        }
-        $form = $request->all();
-        unset($form['_token']);
-        foreach($form as $item) {
-            if ($item != ''){
-                $skill = new Skill;
-                $skill->name = $item;
-                $skill->save();
+        $user = Auth::user();
+        if ($user && $user->id == User::with('plans')->orderBy('id', 'asc')->first()->id) {
+
+            $form = $request->all();
+            unset($form['_token']);
+            foreach($form as $item) {
+                if ($item != ''){
+                    $skill = new Skill;
+                    $skill->name = $item;
+                    $skill->save();
+                }
             }
+            return redirect()->route('skill.index');
         }
-        return redirect()->route('skill.index');
+        return redirect()->route('plan.index');
     }
     public function destroy(Skill $skill) {
-        if (Auth::user() != User::with('plans')->orderBy('id', 'asc')->first()) {
-            return redirect()->route('plan.list');
+        $user = Auth::user();
+        if ($user && $user->id != User::with('plans')->orderBy('id', 'asc')->first()->id) {
+            $skill->delete();
+            return rediredt()->route('skill.index');
         }
-        $skill->delete();
-        return rediredt()->route('skill.index');
+        return redirect()->route('plan.list');
     }
 }
