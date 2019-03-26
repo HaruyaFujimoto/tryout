@@ -35,9 +35,7 @@
         <input type="submit" value="削除する">
     </form>
 </div>
-{{--
 @else
---}}
 @isset ($user)
 <div class="like-button">
     <button id="isLiked">「お気に入り」済み ♥</button>
