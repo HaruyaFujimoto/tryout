@@ -18,7 +18,7 @@ class PlanController extends Controller
     public function create() {
         $user = Auth::user();
         if ($user) {
-            if ($user->id > 1 && DB::table('plans')->where('user_id', $user->id)->count() > 10) {
+            if ($user->id > 1 && DB::table('plans')->where('user_id', $user->id)->count() > 9) {
                 return '現在、1カウント10記事までの制限をかけております<br>もし申し出がありましたら上限を解除致します。<br>解除を希望する方は恐れ入りますが<a href="https://twitter.com/hal822tw">https://twitter.com/hal822tw</a>までご報告ください。';
             }
             $skills = Skill::with('plans')->get();
@@ -29,7 +29,7 @@ class PlanController extends Controller
     public function store(Request $request) {
         $user = Auth::user();
         if ($user) {
-            if ($user->id > 1 && DB::table('plans')->where('user_id', $user->id)->count() > 10) {
+            if ($user->id > 1 && DB::table('plans')->where('user_id', $user->id)->count() > 9) {
                 return '現在、1カウント10記事までの制限をかけております<br>もし申し出がありましたら上限を解除致します。<br>解除を希望する方は恐れ入りますが<a href="https://twitter.com/hal822tw">https://twitter.com/hal822tw</a>までご報告ください。';
             }
             $this->validate($request, Plan::$rules);
