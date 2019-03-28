@@ -19,7 +19,7 @@ class SkillTableSeeder extends Seeder
             [ 'name' => 'Django' ],
             [ 'name' => 'Flask' ],
             [ 'name' => 'javascript' ],
-            [ 'name' => 'View.js' ],
+            [ 'name' => 'Vue.js' ],
             [ 'name' => 'React' ],
             [ 'name' => 'Angular' ],
             [ 'name' => 'Java' ],
