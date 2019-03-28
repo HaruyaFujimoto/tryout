@@ -35,9 +35,6 @@ class UserController extends Controller
     }
 
     public function invite() {
-        if (Auth::user()) {
-            return redirect()->route('plan.index');
-        }
         return view('user.invite');
     }
 }
