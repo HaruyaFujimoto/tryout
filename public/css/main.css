@@ -125,3 +125,10 @@ footer li:last-child {
     display: block;
     text-align: center;
 }
+
+/* about page */
+.about-page a {
+    display: inline;
+    color: blue;
+    text-decoration: underline;
+}

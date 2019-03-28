@@ -1,7 +1,7 @@
 @extends('templates.base')
 @section('title', 'このサイトについて')
 @section('main')
-<div class="wrapper-half aboutPage">
+<div class="wrapper-half about-page">
 <h2>目的</h2>
 <p>
 このサイトは、<br>
