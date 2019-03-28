@@ -36,7 +36,7 @@
 <h2>運営について</h2>
 <p>
 このサイトは個人によって非営利目的で運営されています。<br>
-<a href="https://twitter.com/hal822tw">https://twitter.com/hal822tw</a>
+<a href="https://twitter.com/hal822tw" target="_blank">https://twitter.com/hal822tw</a>
 </p>
 <p class="link-to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>
 </div>

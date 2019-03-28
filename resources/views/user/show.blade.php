@@ -1,4 +1,4 @@
-@extends('templates.base'))
+@extends('templates.base')
 @section('title', 'User 詳細画面')
 {{-- css --}}
 @section('css')
@@ -22,7 +22,7 @@
                 @forelse( $user->plans as $plan )
                 <li><a href="{{ route('plan.show', $plan) }}">{{ $plan->name }}</a></li>
                 @empty
-                <li>投稿した企画はありません<li>
+                <p>投稿した企画はありません</p>
                 @endforelse
             </ol>
         </div>
