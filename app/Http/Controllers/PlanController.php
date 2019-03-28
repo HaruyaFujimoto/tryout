@@ -70,7 +70,7 @@ class PlanController extends Controller
             return redirect()->route('plan.index');
         }
         $rules = Plan::$rules;
-        $rules['name'] = 'required|unique:plans,name,'.$plan->id.'|between:3,20';
+        $rules['name'] = 'required|unique:plans,name,'.$plan->id.'|between:3,40';
         $this->validate($request, $rules);
         $form = $request->all();
         DB::beginTransaction();

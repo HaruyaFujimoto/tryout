@@ -12,7 +12,7 @@ class Plan extends Model
         'name', 'object', 'description'
         ];
     public static $rules = array(
-        'name' => 'required|unique:plans,name|between:3,20',
+        'name' => 'required|unique:plans,name|between:3,40',
         'object' => 'required|between:1,300',
         'description' => 'required|between:1,300'
         );
