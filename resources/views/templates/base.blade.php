@@ -13,12 +13,12 @@
         @yield('css')
     </head>
 <body>
-<div class="white">
-@include('templates.header')
-<div class="wrapper">
-    @yield('main')
-    @include('templates.footer')
-</div>
-</div>
+    <div class="white">
+        @include('templates.header')
+        <main>
+            @yield('main')
+        </main>
+        @include('templates.footer')
+    </div>
 </body>
 </html>

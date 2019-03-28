@@ -1,4 +1,5 @@
 @extends('templates.base')
+@section('title', $plan->name." | Plan detail")
 @section('css')
 {{-- css --}}
 @section('css')
@@ -9,39 +10,44 @@
     <link rel="stylesheet" href="{{ asset('/css/detail.css') }}">
 @endif
 @endsection
+
 {{-- main --}}
-@section('title', 'Plan detail')
 @section('main')
-<div class="detail">
-企画名<h2>『{{ $plan->name }}』</h2>
-<h3>目的・動機</h3>
-<p>{{ $plan->object }}</p>
-<h3>企画詳細</h3>
-<p>{{ $plan->description }}</p>
-<h3>スキル</h3>
-<ul class="skills">
-@forelse ($plan->skills as $skill)
-<li>{{ $skill->name }}</li>
-@empty
-<li>登録なし</li>
-@endforelse
-</ul>
+<div class="wrapper-half detail plan">
+<table>
+    <tr><th>企画名</th></tr>
+    <tr><td>『{{ $plan->name }}』</td></tr>
+    <tr><th>目的・動機</th></tr>
+    <tr><td>{{ $plan->object }}</td></tr>
+    <tr><th>企画詳細</th></tr>
+    <tr><td>{{ $plan->description }}</td></tr>
+    <tr><th>スキル</th></tr>
+    <tr><td>
+        <ul class="skills">
+        @forelse ($plan->skills as $skill)
+        <li class="skill">{{ $skill->name }}</li>
+        @empty
+        <li>登録なし</li>
+        @endforelse
+        </ul>
+    </td></tr>
+</table>
+
 @if ($user == $plan->user)
-<div class="to-edit">
-    <a href="{{ route('plan.edit', $plan) }}"><button>編集する</button></a>
+<div class="buttons edit">
+    <a href="{{ route('plan.edit', $plan) }}"><button class="button">編集する</button></a>
     <form action="{{ route('plan.destroy', $plan) }}" method="post">
         {{ csrf_field()}}
         {{ method_field('delete') }}
-        <input type="submit" value="削除する">
+        <input type="submit" value="削除する" class="button delete">
     </form>
 </div>
-
 @else
-
+{{-- 作成者以外のユーザー --}}
 @isset ($user)
-<div class="like-button">
-    <button id="isLiked">「お気に入り」済み ♥</button>
-    <button id="isUnliked">「お気に入り」に保存する</button>
+<div class="buttons like">
+    <button id="isLiked" class="button">「お気に入り」済み ♥</button>
+    <button id="isUnliked" class="button">「お気に入り」に保存する</button>
     {{-- script --}}
     <script>
     window.onload = function () {
@@ -119,6 +125,6 @@
     </script>
 @endisset
 @endif
-<p class="to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>
+<p class="link-to-list"><a href="{{ route('plan.index') }}">リストへ</a></p>
 </div>
 @endsection

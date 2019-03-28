@@ -1,58 +1,46 @@
+:root {
+    --main-color: #FF8D2E;
+    --accent-color: #447DFF;
+}
+
 .items {
-    width: 100%;
-    padding: 0;
-    font-size: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 .item {
-    display: inline-block;
+    display: block;
     box-sizing: border-box;
     border: 0;
-    width: 33%;
-    padding: 35px;
-    margin: 0;
-}
-.item a{
-    position: relative;
-    margin: 0;
-    padding : 20px 20px 10px;
-    text-decoration: none;
+    margin: 1rem;
     color: inherit;
-    display: block;
     border-radius: 1.2rem;
-    box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
-    height: 300px;
+    box-shadow: 0 0 0.5rem var(--main-color);
 }
-.item a:hover {
-    box-shadow: 0 0 0.5rem rgba(0,0,0,0.7);
-    background-color: azure;
-    opacity: 0.8;
+.item a div {
+    display: grid;
+    padding: 1.5rem 1rem 1rem;
+    height: 20rem;
+    grid-template-rows: 2rem 1fr minmax(1rem, auto);
+    font-size: 1.2rem;
+}
+.item:hover {
+    box-shadow: 0 0 0.5rem var(--accent-color);
+    opacity: 0.7;
     transition: background-color 0.2s;
 }
-.item a h2 {
+.item h2 {
+    font-size: 1.2rem;
     margin: 0;
-    font-size: 1.2rem;
 }
-.item a p {
-    font-size: 1.2rem;
+.item p {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .item ul {
-    position:absolute;
-    bottom: 20px;
-
-    margin-bottom: 0;
+    margin: 0;
     padding: 0;
 }
-.item ul li {
-    font-size: 0.8rem;
-    display: inline-block;
-    border-radius: 5px;
-    background-color: blue;
-    color: white;
-    padding: 2px 10px;
-    opacity: 0.7;
-    margin-right: 5px;
-    margin-top: 5px;
-}
+
 .paginate ul {
     margin: 0 auto;
     padding: 0;
@@ -61,4 +49,8 @@
 }
 .paginate li {
     display: inline;
+    margin-left: 1rem;
+}
+.paginate li:first-child {
+    margin-left: 0;
 }
