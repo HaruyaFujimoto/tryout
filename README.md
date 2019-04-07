@@ -10,8 +10,8 @@ Auth: Twitterログイン
 - ペジネーション機能
 
 # 使用した技術
-PHP 7.2.15
-Laravel 5.8.4
-CentOS 7
-Appache 2.4.6
-MySQL 5.7.25
+- PHP 7.2.15
+- Laravel 5.8.4
+- CentOS 7
+- Appache 2.4.6
+- MySQL 5.7.25
