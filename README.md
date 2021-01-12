@@ -1,3 +1,5 @@
+This project is for tutorial of Laravel framework.
+
 # tryout
 できること: 企画投稿 & 興味のある企画にマークをつける
 Auth: Twitterログイン
