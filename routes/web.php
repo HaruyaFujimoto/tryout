@@ -1,8 +1,8 @@
 <?php
-Route::get('/', function () {
-    return redirect()->route('plan.index');
-});
-// Plan (: Tryout Main)
+use Illuminate\Support\Facades\Route;
+
+Route::redirect('/', '/plan');
+
 Route::get('plan', 'PlanController@index')->name('plan.index');
 Route::get('plan/post','PlanController@create')->name('plan.create');
 Route::post('plan', 'PlanController@store')->name('plan.store');
